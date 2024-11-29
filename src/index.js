@@ -10,8 +10,13 @@ const admin = require('firebase-admin');
 const app = express();
 const port = 5000;
 
+// Defina as opções CORS
+const corsOptions = {
+  origin: 'https://cacapreco-backend.onrender.com',
+};
 
-app.use(cors());
+// Aplica o middleware cors com as opções configuradas
+app.use(cors(corsOptions)); 
 app.use(express.json());
 
 // Rotas
@@ -19,8 +24,6 @@ app.use('/usuarios', usuarioRoutes);
 app.use('/supermercados', supermercadoRoutes);
 app.use('/produtos', produtoRoutes);
 
-
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
-
